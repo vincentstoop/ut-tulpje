@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+* https://reader.codaisseur.com/courses/intermediate-bootcamp/23/codaisseurbnb-project-setup/installing-devise slightly unsure about the correct placement of the flash messages in application.html.erb!
