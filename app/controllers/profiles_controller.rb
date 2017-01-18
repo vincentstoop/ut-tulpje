@@ -8,6 +8,10 @@ class ProfilesController < ApplicationController
     @profile = Profile.new
   end
 
+  def show
+    @profile = Profile.find(params[:id])
+  end
+
   def create
     @profile = current_user.build_profile(profile_params)
 
