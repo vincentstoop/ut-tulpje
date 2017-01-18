@@ -7,8 +7,9 @@ class Profile < ApplicationRecord
   validates :city, presence: true
 
   def full_name
-    if !:prefix.nil?
-    "#{first_name} #{prefix} #{last_name}"
-    else "#{first_name} #{last_name}"
+    if prefix.nil?
+      "#{first_name} #{last_name}"
+    else
+      "#{first_name} #{prefix} #{last_name}"
     end
   end
