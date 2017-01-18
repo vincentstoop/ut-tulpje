@@ -1,0 +1,15 @@
+<article class="departments">
+
+  <h1>Our Departments</h1>
+
+  <ul>
+    <% @departments.each do |department| %>
+    <%= link_to (image_tag department.image_url), department_path(department) %>
+    <div class="">
+      <h2><%= department.name %></h2>
+      <p><%= department.description %></p>
+    </div>
+    <% end %>
+  </ul>
+
+</article>
