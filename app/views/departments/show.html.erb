@@ -1,4 +1,10 @@
 <h1><%= @department.name %></h1>
+<p><%= @department.description %></p>
+<% if !(@department.nil? )%>
+<%= image_tag @department.image_url %>
+<% end %>
+
+
 <ul>
   <% @department.products.each do |product| %>
   <li>
@@ -23,3 +29,5 @@
   </li>
   <% end %>
 </ul>
+
+<%= link_to "[Edit Department information]", edit_department_path(@department.id) %>

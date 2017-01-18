@@ -9,7 +9,7 @@
       <%= link_to (image_tag department.image_url), department_path(department) %>
       <% end %>
       <div class="">
-        <h2><%= department.name %></h2>
+        <h2><%= link_to department.name, department_path(department) %></h2>
         <p><%= department.description %></p>
       </div>
     </li>
@@ -17,3 +17,5 @@
   </ul>
 
 </article>
+
+<%= link_to "[Add Department]", new_department_path %>
