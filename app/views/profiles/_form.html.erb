@@ -1,0 +1,55 @@
+<%= form_for @profile do |f| %>
+  <% @profile.errors.full_messages.each do |msg| %>
+    <p class="Error"><%= msg %></p>
+  <% end %>
+
+  <div class="form-group">
+    <label>First Name</label>
+    <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Prefix</label>
+    <%= f.text_field :prefix, placeholder: "Prefix", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Last Name</label>
+    <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Street Name</label>
+    <%= f.text_area :street_name, placeholder: "Street Name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>House Number</label>
+    <%= f.text_field :house_number, placeholder: "House Number", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Addition</label>
+    <%= f.text_field :house_number_addition, placeholder: "a,b,c", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Zip Code</label>
+    <%= f.text_field :zip_code, placeholder: "Zip Code", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>City</label>
+    <%= f.text_field :city, placeholder: "City", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Phone Number</label>
+    <%= f.text_field :phone_number, placeholder: "First Name", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+    <%= link_to "Back", root_path, class: "btn btn-default" %>
+  </div>
+<% end %>
