@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
+  # this can come in handy later on. requires
   before_action :set_profile, only: [:edit, :update]
   before_action :authenticate_user!
 
@@ -36,7 +37,7 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:first_name, :prefix, :last_name, :street_name, :house_number, :house_number_addition, :zip_code, :city, :phone_number)
   end
-  
+
   def require_login
     unless logged_in?
       flash[:error] = "You must be logged in to access your profile."
