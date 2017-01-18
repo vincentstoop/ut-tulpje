@@ -31,3 +31,4 @@
 </ul>
 
 <%= link_to "[Edit Department information]", edit_department_path(@department.id) %>
+<%= link_to "[Delete]", department_path(@department.id), method: :delete, data: { confirm: "Are you sure?" } %>
