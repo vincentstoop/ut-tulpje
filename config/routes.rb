@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'pages/home'
 
   devise_for :users
+  
+  resources :users, only: [:show]
   resources :profiles
   resources :departments
   resources :products
