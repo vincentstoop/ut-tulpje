@@ -13,3 +13,4 @@ class Profile < ApplicationRecord
       "#{first_name} #{prefix} #{last_name}"
     end
   end
+end
