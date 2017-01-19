@@ -9,7 +9,7 @@
       <%= link_to (image_tag product.image_url), product_path(product) %>
       <% end %>
       <div class="product-card">
-        <h2><%= product.name %></h2>
+        <h2><%= link_to product.name, product_path(product) %></h2>
         <p><%= product.description %></p>
       </div>
     </li>
@@ -17,3 +17,5 @@
   </ul>
 
 </article>
+
+<%= link_to "[Add Product]", new_product_path %>
