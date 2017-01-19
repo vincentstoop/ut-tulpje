@@ -63,3 +63,5 @@ group :test do
 end
 
 gem 'devise'
+
+gem 'carrierwave', '0.11.2'
