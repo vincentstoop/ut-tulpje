@@ -8,5 +8,19 @@
   <%= f.label :image_url %>
   <%= f.text_field :image_url %>
 
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+
+  <label>Departments</label>
+
+  <%= f.label :department %>
+  <%= f.collection_select(:department_id, Department.all, :id, :name) %>
+
+  <label>Publish this product?</label>
+
+  <div class="form-group">
+    <%= f.check_box :availability %> In Stock
+  </div>
+
   <%= f.submit (@product.new_record? ? "Create" : "Update") %>
 <% end %>
