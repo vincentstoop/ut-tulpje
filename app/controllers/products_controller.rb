@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
-
+  # before_action :set_product, only: [:show, :edit, :update]
+  # before_action :authenticate_user!, except: [:show]
+  
   def index
     @products = Product.all
   end
@@ -37,7 +39,7 @@ class ProductsController < ApplicationController
     @product.destroy
 
     redirect_to product_path
-  end    
+  end
 
   private
 
