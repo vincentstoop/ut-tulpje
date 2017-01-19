@@ -1,6 +1,8 @@
-#User.delete_all
-#Department.delete_all
+#Photo.delete_all
 #Product.delete_all
+#Profile.delete_all
+#Department.delete_all
+#User.delete_all
 
 # Departments
 department1 = Department.create(name: "Bakery Department", description: "'t Tulpje bakery offering bespoke handmade cupcakes, layer cakes, loaves and slices, just like you would make at home.")
