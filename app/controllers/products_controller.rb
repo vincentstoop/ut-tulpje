@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
   # before_action :set_product, only: [:show, :edit, :update]
   # before_action :authenticate_user!, except: [:show]
-  
+
   def index
     @products = Product.all
   end
 
   def show
     @product = Product.find(params[:id])
+    @photos = @room.photos
   end
 
   def new
@@ -16,8 +17,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @page.save
-      redirect_to @page
+    if @product.save
+      image_params.each do |image|
+        @product.photo.create(image: image)
+    end
+
+    redirect_to edit_product_path(@product), notice: "Product succesfully created"
     else
       render 'new'
     end
@@ -42,6 +47,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def image_params
+    params[:images].present? ? params.require(:images) : []
+  end
 
   def product_params
     params.require(:product).permit(:name, :description, :reference_number, :image_url, :video_url, :availability, :price, :department)
