@@ -1,8 +1,9 @@
-#Photo.delete_all
-#Product.delete_all
-#Profile.delete_all
-#Department.delete_all
-#User.delete_all
+
+Photo.delete_all
+Product.delete_all
+Profile.delete_all
+Department.delete_all
+User.delete_all
 
 # Departments
 department1 = Department.create(name: "Bakery Department", description: "'t Tulpje bakery offering bespoke handmade cupcakes, layer cakes, loaves and slices, just like you would make at home.")
@@ -17,23 +18,52 @@ kelly = User.create(email: "kelly@ut-tulpje.com", password: "defg1234")
 melvin = User.create(email: "melvin@ut-tulpje.com", password: "hijk1234")
 vincent = User.create(email: "vincent@ut-tulpje.com", password: "lmno1234")
 
+
+# Photos
+photo1 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856040/georgetown-cupcakes-fb_ps9bsu.jpg")
+photo2 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484855959/malted-wholemeal-loaf-023_nralrj.jpg")
+photo3 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856011/SugaryWinzy-Basket-Weave-Frosting-on-Banana-Chocolate-Chip-Layer-Cake17_ikexba.jpg")
+photo4 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856088/cutout-beef_ilju8l.jpg")
+photo5 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856111/pork1_qobc8k.gif")
+photo6 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856148/Chicken_dmikyg.jpg")
+photo7 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856176/1154_detail_rfnwgc.jpg")
+photo8 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856200/1918_lvqfmi.jpg")
+photo9 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856217/1403060163593064484_apqfkt.jpg")
+photo10 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856260/s919333956212596705_p51_i3_w2197_pqlizz.jpg")
+photo11 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856294/fresh_shrimp_pwzxd9.jpg")
+photo12 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856331/muscles_ecedya.jpg")
+photo13 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856370/Beta_Shampoo120ml_Prod_neynf6.jpg")
+photo14 = Photo.create(remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856391/argan-oil-morocco-conditioner_opxupo.jpg")
+photo15 = Photo.create(remote_image_url_url: "https://res.cloudinary.com/dexiozdcc/image/upload/v1484856409/aspirine_500_sfbbfv.jpg")
+
 # Products
-product1 = Product.create(name: "Handmade cupcakes", description: "In all colors of the rainbow", price: 4.95, department: department1, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856040/georgetown-cupcakes-fb_ps9bsu.jpg")
-product2 = Product.create(name: "Loave", description: "Freshly baked everyday", price: 2.95, department: department1, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484855959/malted-wholemeal-loaf-023_nralrj.jpg")
-product3 = Product.create(name: "Layer cake", description: "Layer on top of layer", price: 14.95, department: department1, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856011/SugaryWinzy-Basket-Weave-Frosting-on-Banana-Chocolate-Chip-Layer-Cake17_ikexba.jpg")
+product1 = Product.create(name: "Handmade cupcakes", description: "In all colors of the rainbow", price: 4.95, department: department1, image_url: photo1)
+product2 = Product.create(name: "Loave", description: "Freshly baked everyday", price: 2.95, department: department1, image_url: photo2)
+product3 = Product.create(name: "Layer cake", description: "Layer on top of layer", price: 14.95, department: department1, image_url: photo3)
 
-product4 = Product.create(name: "Beef", description: "Best of the country", price: 4.90, department: department2, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856088/cutout-beef_ilju8l.jpg")
-product5 = Product.create(name: "Pork", description: "'t Tulpje's finest", price: 3.75, department: department2, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856111/pork1_qobc8k.gif")
-product6 = Product.create(name: "Poultry", description: "Best quality ever", price: 2.85, department: department2, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856148/Chicken_dmikyg.jpg")
+product4 = Product.create(name: "Beef", description: "Best of the country", price: 4.90, department: department2, image_url: photo4)
+product5 = Product.create(name: "Pork", description: "'t Tulpje's finest", price: 3.75, department: department2, image_url: photo5)
+product6 = Product.create(name: "Poultry", description: "Best quality ever", price: 2.85, department: department2, image_url: photo6)
 
-product7 = Product.create(name: "Paprika", description: "Never fresher", price: 0.99, department: department3, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856176/1154_detail_rfnwgc.jpg")
-product8 = Product.create(name: "Cucumber", description: "From Farmer Joe's", price: 0.75, department: department3, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856200/1918_lvqfmi.jpg")
-product9 = Product.create(name: "Lettuce", description: "A must for every salad", price: 0.60, department: department3, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856217/1403060163593064484_apqfkt.jpg")
+product7 = Product.create(name: "Paprika", description: "Never fresher", price: 0.99, department: department3, image_url: photo7)
+product8 = Product.create(name: "Cucumber", description: "From Farmer Joe's", price: 0.75, department: department3, image_url: photo8)
+product9 = Product.create(name: "Lettuce", description: "A must for every salad", price: 0.60, department: department3, image_url: photo9)
 
-product10 = Product.create(name: "Lobster", description: "Treat yourself", price: 15.96, department: department4, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856260/s919333956212596705_p51_i3_w2197_pqlizz.jpg")
-product11 = Product.create(name: "Shrimp", description: "Like no other", price: 3.45, department: department4, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856294/fresh_shrimp_pwzxd9.jpg")
-product12 = Product.create(name: "Shellfish", description: "No rotten ones here", price: 6.75, department: department4, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856331/muscles_ecedya.jpg")
+product10 = Product.create(name: "Lobster", description: "Treat yourself", price: 15.96, department: department4, image_url: photo10)
+product11 = Product.create(name: "Shrimp", description: "Like no other", price: 3.45, department: department4, image_url: photo11)
+product12 = Product.create(name: "Shellfish", description: "No rotten ones here", price: 6.75, department: department4, image_url: photo12)
 
-product13 = Product.create(name: "Shampoo", description: "Smooth hair every day", price: 5.75, department: department5, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856370/Beta_Shampoo120ml_Prod_neynf6.jpg")
-product14 = Product.create(name: "Conditioner", description: "Tangles be gone", price: 16.99, department: department5, remote_image_url_url: "http://res.cloudinary.com/dexiozdcc/image/upload/v1484856391/argan-oil-morocco-conditioner_opxupo.jpg")
-product15 = Product.create(name: "Aspirines", description: "Beats all sorts of headaches", price: 4.95, department: department5, remote_image_url_url: "https://res.cloudinary.com/dexiozdcc/image/upload/v1484856409/aspirine_500_sfbbfv.jpg")
+product13 = Product.create(name: "Shampoo", description: "Smooth hair every day", price: 5.75, department: department5, image_url: photo13)
+product14 = Product.create(name: "Conditioner", description: "Tangles be gone", price: 16.99, department: department5, image_url: photo14)
+product15 = Product.create(name: "Aspirines", description: "Beats all sorts of headaches", price: 4.95, department: department5, image_url: photo15)
+
+department1 << [product1, product2, product3]
+department1.save
+department2 << [product4, product5, product6]
+department2.save
+department3 << [product7, product8, product9]
+department3.save
+department4 << [product10, product11, product12]
+department4.save
+department5 << [product13, product14, product15]
+department5.save
