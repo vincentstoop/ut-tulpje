@@ -7,7 +7,6 @@ describe "User viewing the list of departments" do
   let!(:dep3) { create :department, name: "Listing Name 3"}
 
   it "shows all departments" do
-
     visit departments_url
 
     expect(page).to have_text("Listing Name 1")
