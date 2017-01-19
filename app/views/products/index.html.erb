@@ -1,0 +1,21 @@
+<article class="products">
+
+  <h1>Our Products</h1>
+
+  <ul>
+  <% @products.each do |product| %>
+    <li>
+    <% if !(product.image_url.nil?) %>
+      <%= link_to (image_tag product.image_url), product_path(product) %>
+      <% end %>
+      <div class="product-card">
+        <h2><%= link_to product.name, product_path(product) %></h2>
+        <p><%= product.description %></p>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+
+</article>
+
+<%= link_to "[Add Product]", new_product_path %>
