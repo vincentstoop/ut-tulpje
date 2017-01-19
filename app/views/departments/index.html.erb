@@ -1,0 +1,21 @@
+<article class="departments">
+
+  <h1>Our Departments</h1>
+
+  <ul>
+    <% @departments.each do |department| %>
+    <li>
+      <% if !(department.image_url.nil?) %>
+      <%= link_to (image_tag department.image_url), department_path(department) %>
+      <% end %>
+      <div class="">
+        <h2><%= link_to department.name, department_path(department) %></h2>
+        <p><%= department.description %></p>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+
+</article>
+
+<%= link_to "[Add Department]", new_department_path %>
