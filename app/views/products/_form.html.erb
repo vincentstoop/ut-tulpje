@@ -12,9 +12,11 @@
     </span>
   </div>
 
-  <!-- <div id="photos">
-    <%= render @product.photos %>
-  </div> -->
+
+  <div id="photos">
+    <%= render 'photos/list' %>
+  </div>
+
 
   <%= f.label :price %>
   <%= f.number_field :price, class: :text_field, step: 0.01 %>
