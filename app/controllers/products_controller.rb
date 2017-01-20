@@ -17,15 +17,20 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    
     if @product.save
       image_params.each do |image|
         @product.photo.create(image: image)
-    end
-
-    redirect_to edit_product_path(@product), notice: "Product succesfully created"
+      end
+      redirect_to @product, notice: "Product successfully created"
+    
     else
-      render 'new'
+      render :new
     end
+  end
+
+  def edit
+    @product = Product.find(params[:id])
   end
 
   def update
@@ -43,7 +48,7 @@ class ProductsController < ApplicationController
 
     @product.destroy
 
-    redirect_to product_path
+    redirect_to @product
   end
 
   private
@@ -53,6 +58,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :reference_number, :image_url, :video_url, :availability, :price, :department)
+    params.require(:product).permit(:name, :description, :image_url, :availability, :price, :department_id)
   end
 end

@@ -10,16 +10,11 @@
   <li>
     <h3><%= link_to product.name, product_path(product) %></h3>
     <p><%= product.description %></p>
-    <p><%= product.reference_number %></p>
 
     <p>&euro; <%= product.price %></p>
 
     <% if !(product.image_url.nil? )%>
     <%= image_tag product.image_url %>
-    <% end %>
-
-    <% if !(product.video_url.nil?) %>
-    <%= video_tag product.video_url %>
     <% end %>
 
     <% if !product.availability %>
