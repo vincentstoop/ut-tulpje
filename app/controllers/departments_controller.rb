@@ -6,6 +6,7 @@ class DepartmentsController < ApplicationController
 
   def show
     @department = Department.find(params[:id])
+    @department_products = @department.products.order(params[:sort])
   end
 
   def new
@@ -43,7 +44,7 @@ class DepartmentsController < ApplicationController
 
     redirect_to departments_path
   end
-  
+
   private
   def department_params
     params.require(:department).permit(:name, :description, :image_url)
