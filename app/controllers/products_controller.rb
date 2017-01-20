@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   # before_action :authenticate_user!, except: [:show]
 
   def index
-    @products = Product.all
+    @products = Product.all.order(params[:sort])
   end
 
   def show
@@ -17,13 +17,13 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    
+
     if @product.save
       image_params.each do |image|
         @product.photo.create(image: image)
       end
       redirect_to @product, notice: "Product successfully created"
-    
+
     else
       render :new
     end
