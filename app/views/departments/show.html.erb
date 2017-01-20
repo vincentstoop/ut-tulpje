@@ -1,9 +1,5 @@
 <h1><%= @department.name %></h1>
 <p><%= @department.description %></p>
-<% if !(@department.nil? )%>
-<%= image_tag @department.image_url %>
-<% end %>
-
 
 <ul>
   <% @department.products.each do |product| %>
