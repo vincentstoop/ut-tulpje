@@ -1,0 +1,26 @@
+<h1><%= @product.name %></h1>
+<p><%= @product.description %></p>
+<p>&euro; <%= @product.price %></p>
+
+<h4>Photos</h4>
+<% @product.photos.each do |photo| %>
+  <%= image_tag photo.image %>
+<% end %>
+
+<ul>
+  <li>
+
+    <% if !(@product.image_url.nil? )%>
+    <%= image_tag @product.image_url %>
+    <% end %>
+
+    <% if !@product.availability %>
+    <h4>Out of stock</h4>
+    <% end %>
+
+  </li>
+
+</ul>
+
+<%= link_to "[Edit Product Info]", edit_product_path(@product) %>
+<%= link_to "[Delete]", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" } %>
