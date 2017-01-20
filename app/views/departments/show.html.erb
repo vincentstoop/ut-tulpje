@@ -1,8 +1,9 @@
 <h1><%= @department.name %></h1>
 <p><%= @department.description %></p>
 
+<%= render 'partials/sorting' %>
 <ul>
-  <% @department.products.each do |product| %>
+  <% @department_products.each do |product| %>
   <li>
     <h3><%= link_to product.name, product_path(product) %></h3>
     <p><%= product.description %></p>
