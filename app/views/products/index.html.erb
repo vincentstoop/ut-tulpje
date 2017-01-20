@@ -1,22 +1,39 @@
-<article class="products">
+<div class="container-fluid">
+  <div class="content-wrapper">
+		<div class="item-container">
+			<div class="container">
+				<div class="col-md-12">
+          <article class="products">
 
-  <h1>Our Products</h1>
-  <%= render 'partials/sorting' %>
-  <ul>
-  <% @products.each do |product| %>
-    <li>
-    <% if !(product.image_url.nil?) %>
-      <%= link_to (image_tag product.image_url), product_path(product) %>
-      <% end %>
-      <div class="product-card">
-        <h2><%= link_to product.name, product_path(product) %></h2>
-        <p><%= product.description %></p>
-        <p><%= product.price %></p>
+            <h1>Our Products</h1>
+            <%= render 'partials/sorting' %>
+            <ul>
+            <% @products.each do |product| %>
+              <li>
+              <% if !(product.image_url.nil?) %>
+                <%= link_to (image_tag product.image_url), product_path(product) %>
+                <% end %>
+                <div class="product-card">
+                  <h2><%= link_to product.name, product_path(product) %></h2>
+                  <% product.photos.each do |photo| %>
+                    <p><%= image_tag photo.image.thumbnail %></p>
+                  <% end %>
+                  <p><%= product.description %></p>
+                  <p><%= product.price %></p>
+                  <p><button type="button" class="btn btn-success">
+                    <%= link_to "More info", product_path(product) %>
+                  </button></p>
+                </div>
+              </li>
+            <% end %>
+            </ul>
+
+          </article>
+
+          <%= link_to "[Add Product]", new_product_path %>
+
+        </div>
       </div>
-    </li>
-  <% end %>
-  </ul>
-
-</article>
-
-<%= link_to "[Add Product]", new_product_path %>
+    </div>
+  </div>
+</div>

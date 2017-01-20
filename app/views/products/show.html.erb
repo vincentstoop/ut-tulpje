@@ -1,26 +1,40 @@
-<h1><%= @product.name %></h1>
-<p><%= @product.description %></p>
-<p>&euro; <%= @product.price %></p>
+<div class="container-fluid">
+    <div class="content-wrapper">
+		<div class="item-container">
+			<div class="container">
+				<div class="col-md-12">
+					<div class="col-md-5">
+            <% @product.photos.each do |photo| %>
+              <%= image_tag photo.image.medium, class:"product-image" %>
+            <% end %>
+          </div>
 
-<h4>Photos</h4>
-<% @product.photos.each do |photo| %>
-  <%= image_tag photo.image %>
-<% end %>
-
-<ul>
-  <li>
-
-    <% if !(@product.image_url.nil? )%>
-    <%= image_tag @product.image_url %>
-    <% end %>
-
-    <% if !@product.availability %>
-    <h4>Out of stock</h4>
-    <% end %>
-
-  </li>
-
-</ul>
-
-<%= link_to "[Edit Product Info]", edit_product_path(@product) %>
-<%= link_to "[Delete]", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" } %>
+				<div class="col-md-7">
+					<div class="product-title"><h1><%= @product.name %></h1></div>
+					<div class="product-desc"><%= @product.description %></div>
+					<hr>
+					<div class="product-price">&euro; <%= @product.price %></div>
+					<div class="product-stock">
+            <% if @product.availability %>
+              In stock
+            <% else %>
+              Out of stock!
+            <% end %>
+          </div>
+					<hr>
+					<div>
+						<button type="button" class="btn btn-success">
+							Add to cart
+						</button>
+            <button type="button" class="btn btn-success">
+							<%= link_to "Edit", edit_product_path(@product) %>
+						</button>
+            <button type="button" class="btn btn-success">
+							<%= link_to "Delete", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" } %>
+						</button>
+          </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
