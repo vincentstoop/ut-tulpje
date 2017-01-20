@@ -41,8 +41,8 @@ RSpec.describe Profile, :type => :model do
       profile.valid?
       expect(profile.errors).to have_key(:city)
     end
-    
-  end
+
+end
 end
 #   it "is not valid without a first name"
 #   it "is not valid without a last name"
