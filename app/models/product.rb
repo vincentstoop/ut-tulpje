@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :department
-  has_one :profile
+  has_many :photos
 
   def has_photo?
     photo.present?
