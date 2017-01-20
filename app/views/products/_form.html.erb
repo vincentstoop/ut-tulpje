@@ -1,9 +1,18 @@
 <%= form_for @product, html: { multipart: true } do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="form-group">
+    <label>Product name</label>
+    <%= f.text_field :name, placeholder: "e.g. Guacamole", class: "form-control" %>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+  <div class="form-group">
+    <label>Product description</label>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Price</label>
+    <%= f.number_field :price, step: 0.01, class: "form-control" %>
+  </div>
 
   <div class="">
     <span class="btn btn-default">
@@ -12,23 +21,21 @@
     </span>
   </div>
 
-
   <div id="photos">
     <%= render 'photos/list' %>
   </div>
 
-
-  <%= f.label :price %>
-  <%= f.number_field :price, class: :text_field, step: 0.01 %>
-
-  <label>Departments</label>
-
-  <%= f.label :department %>
-  <%= f.collection_select(:department_id, Department.all, :id, :name) %>
+  <hr>
 
   <div class="form-group">
-    <%= f.check_box :availability %> In Stock
+    <label>Department</label>
+    <%= f.collection_select(:department_id, Department.all, :id, :name) %>
   </div>
 
-  <%= f.submit (@product.new_record? ? "Create" : "Update") %>
+  <div class="form-group">
+    <label>Available?</label>
+    <%= f.check_box :availability %>
+  </div>
+
+  <%= f.submit (@product.new_record? ? "Create" : "Update"), class: "btn btn-primary" %>
 <% end %>
