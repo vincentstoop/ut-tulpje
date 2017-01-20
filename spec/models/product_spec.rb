@@ -9,8 +9,8 @@ RSpec.describe Product, type: :model do
     end
   end
 
-  it "is invalid with a listing name longer than 100 characters" do
-      product = Product.new(description: "")
+  it "is invalid with a description longer than 100 characters" do
+      product = Product.new(description: "Aksldfda jhfjsjfgas fef s dkjcnskjdhv v aklsdlfjaseelwae fkwfawejfhewajf awjwefnejk ahgjshagfjshdafg ywaegfbhsavfyc")
       product.valid?
       expect(product.errors).to have_key(:description)
     end
