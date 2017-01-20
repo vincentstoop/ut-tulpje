@@ -1,12 +1,20 @@
-<%= form_for @product do |f| %>
+<%= form_for @product, html: { multipart: true } do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
   <%= f.label :description %>
   <%= f.text_area :description %>
 
-  <%= f.label :image_url %>
-  <%= f.text_field :image_url %>
+  <div class="">
+    <span class="btn btn-default">
+      Upload Photos
+      <%= file_field_tag "images[]", type: :file, multiple: false %>
+    </span>
+  </div>
+
+  <div id="photos">
+    <%= render @product.photo %>
+  </div>
 
   <%= f.label :price %>
   <%= f.number_field :price, class: :text_field, step: 0.01 %>
@@ -15,8 +23,6 @@
 
   <%= f.label :department %>
   <%= f.collection_select(:department_id, Department.all, :id, :name) %>
-
-  <label>Publish this product?</label>
 
   <div class="form-group">
     <%= f.check_box :availability %> In Stock
