@@ -7,19 +7,19 @@ class ShoppingCart
   end
 
   def add_to_cart product, quantity = 1
-    @items[product] = quantity
+    @items[product.to_s] = quantity
   end
 
   def remove_from_cart product
-    @items.delete(product)
+    @items.delete(product.to_s)
   end
 
   def update_quantity product, quantity
     if quantity == 0
-      remove_from_cart product
+      remove_from_cart product.to_s
       return
     else
-      @items[product] = quantity
+      @items[product.to_s] = quantity
     end
   end
 
