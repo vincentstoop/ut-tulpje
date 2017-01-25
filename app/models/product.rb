@@ -9,8 +9,8 @@ class Product < ApplicationRecord
     photo.present?
   end
 
-  def is_active?
-    photo.availability
+  def is_available?
+    :availability
   end
 
 end

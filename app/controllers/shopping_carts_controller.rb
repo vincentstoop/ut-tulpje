@@ -2,14 +2,21 @@ class ShoppingCartsController < ApplicationController
   before_action :set_product
   before_action :set_quantity
 
+  #checks inbouwen
+
   def add
-    session[:shoppingcart] = @shopping_cart.add_to_cart @product, @quantity
+    if Product.find(params[:product_id]).is_available?
+      session[:shoppingcart] = @shopping_cart.add_to_cart @product, @quantity
+    else
+      redirect_to products_path, notice: "Sorry, this product is out of stock."
+    end
     # debugger
     redirect_to products_path
   end
 
   def remove
     session[:shoppingcart] = @shopping_cart.remove_from_cart @product
+    redirect_to products_path
   end
 
   def update
@@ -28,6 +35,6 @@ class ShoppingCartsController < ApplicationController
   end
 
   def set_quantity
-    @quantity = params[:quantity].to_i
+    @quantity = params[:quantity] ? params[:quantity].to_i : 1
   end
 end
