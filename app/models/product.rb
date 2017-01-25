@@ -9,4 +9,8 @@ class Product < ApplicationRecord
     photo.present?
   end
 
+  def is_active?
+    photo.availability
+  end
+
 end
