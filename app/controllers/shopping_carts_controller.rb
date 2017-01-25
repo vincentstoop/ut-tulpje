@@ -19,10 +19,10 @@ class ShoppingCartsController < ApplicationController
   private
 
   def set_product
-    @product = params[:product_id]
+    @product = params[:product_id].to_s
   end
 
   def set_quantity
-    @quantity = params[:quantity]
+    @quantity = params[:quantity].to_i
   end
 end
