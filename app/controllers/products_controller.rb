@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
       image_params.each do |image|
         @product.photo.create(image: image)
       end
-      redirect_to @product, notice: "Product successfully created"
+      redirect_to department_product_path(@product.department, @product), notice: "Product successfully added."
 
     else
       render :new
@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.update_attributes(product_params)
-      redirect_to @product
+      redirect_to department_product_path(@product.department, @product)
     else
       render 'edit'
     end
@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
 
     @product.destroy
 
-    redirect_to @product
+    redirect_to department_path(params[:department_id])
   end
 
   private

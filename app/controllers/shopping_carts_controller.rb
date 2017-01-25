@@ -7,16 +7,16 @@ class ShoppingCartsController < ApplicationController
   def add
     if is_available?
       session[:shoppingcart] = @shopping_cart.add_to_cart @product, @quantity
-      redirect_to products_path, notice: "Added to your cart."
+      redirect_to department_path(Product.find(@product.to_i).department_id), notice: "Added to your cart."
     else
-      redirect_to product_path(@product.to_i), notice: "Sorry, this product is not in stock."
+      redirect_to department_product_path(Product.find(@product.to_i).department_id, @product.to_i), notice: "Sorry, this product is not in stock."
     end
     # debugger
   end
 
   def remove
     session[:shoppingcart] = @shopping_cart.remove_from_cart @product
-    redirect_to products_path
+    redirect_to department_path(@product.department)
   end
 
   def update

@@ -24,13 +24,13 @@
 					<hr>
 					<div>
 						<button type="button" class="btn btn-success">
-							<%= link_to "Add to cart", add_item_path(product_id: @product.id, quantity: 1) %>
+							<%= link_to "Add to cart", add_item_path(product_id: @product.id, quantity: 1, department_id: params[:department_id]) %>
 						</button>
             <button type="button" class="btn btn-success">
-							<%= link_to "Edit", edit_product_path(@product) %>
+							<%= link_to "Edit", edit_department_product_path(@product.department, @product) %>
 						</button>
             <button type="button" class="btn btn-success">
-							<%= link_to "Delete", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" } %>
+							<%= link_to "Delete", department_product_path(@product.department.id, @product.id), method: :delete, data: { confirm: "Are you sure?" } %>
 						</button>
           </div>
 				</div>
