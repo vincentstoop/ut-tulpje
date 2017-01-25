@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
   resources :profiles
   resources :departments do
-    resources :products, only: [:show, :new, :edit, :update, :destroy]
+    resources :products
   end
   resources :photos
 
