@@ -4,15 +4,19 @@ class ApplicationController < ActionController::Base
   before_action :init_shopping_cart
 
   def init_shopping_cart
-    @shopping_cart = session[:shoppingcart] || {}
+    session[:shoppingcart] ||= Hash.new(0)
+    debugger
+    @shopping_cart = ShoppingCart.new(session[:shoppingcart])
     @shopping_cart_items = {}
     @total_price = 0
     # @shopping_cart = {"1" => 5, "3" => 2}
     @number_of_cart_items = 0
-    @shopping_cart.each_value do |quantity|
-      @number_of_cart_items += quantity
+    debugger
+    @shopping_cart.items.each_value do |quantity|
+      debugger
+      @number_of_cart_items += quantity.to_i
     end
-    shopping_cart_keys = @shopping_cart.keys
+    shopping_cart_keys = @shopping_cart.items.keys
     shopping_cart_keys.each do |product|
       @shopping_cart_items[product] = Product.find product.to_i
       @total_price += @shopping_cart_items[product].price * @shopping_cart[product]
