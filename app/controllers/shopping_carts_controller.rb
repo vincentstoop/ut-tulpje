@@ -39,7 +39,6 @@ class ShoppingCartsController < ApplicationController
   end
 
   def is_available?
-    debugger
     Product.find(params[:product_id]).availability
   end
 end

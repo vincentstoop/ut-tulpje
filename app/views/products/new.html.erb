@@ -4,6 +4,47 @@
   </div>
 
   <div class="panel-body">
-    <%= render 'form' %>
+    <%= form_for [@department, @department.products.new], html: { multipart: true } do |f| %>
+      <div class="form-group">
+        <label>Product name</label>
+        <%= f.text_field :name, placeholder: "e.g. Guacamole", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label>Product description</label>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label>Price</label>
+        <%= f.number_field :price, step: 0.01, class: "form-control" %>
+      </div>
+
+      <div class="">
+        <span class="btn btn-default">
+          Upload Photos
+          <%= file_field_tag "images[]", type: :file, multiple: false %>
+        </span>
+      </div>
+
+      <div id="photos">
+        <%= render 'photos/list' %>
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+        <label>Department</label>
+        <%= f.collection_select(:department_id, Department.all, :id, :name) %>
+      </div>
+
+      <div class="form-group">
+        <label>Available?</label>
+        <%= f.check_box :availability %>
+      </div>
+
+      <%= f.submit (@product.new_record? ? "Create" : "Update"), class: "btn btn-primary" %>
+    <% end %>
+    </div>
+
   </div>
-</div>
