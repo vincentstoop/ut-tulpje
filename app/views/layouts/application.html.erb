@@ -10,7 +10,7 @@
     </head>
 
     <body>
-      <h1>Items: <%= @number_of_cart_items %>, <%= @shopping_cart.items.each {|item, qty| item; qty} %></h1>
+      <h1>Items: <%= @items_in_cart%>, <%= @order_total %></h1>
       <%= render 'shared/navbar' %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>

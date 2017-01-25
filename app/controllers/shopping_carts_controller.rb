@@ -16,6 +16,11 @@ class ShoppingCartsController < ApplicationController
     session[:shoppingcart] = @shopping_cart.update_quantity @product, @quantity
   end
 
+  def empty
+    delete_all_items
+    session[:shoppingcart] = nil
+  end
+
   private
 
   def set_product
