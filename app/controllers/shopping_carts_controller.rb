@@ -5,13 +5,13 @@ class ShoppingCartsController < ApplicationController
   #checks inbouwen
 
   def add
-    if Product.find(params[:product_id]).is_available?
+    if is_available?
       session[:shoppingcart] = @shopping_cart.add_to_cart @product, @quantity
+      redirect_to products_path, notice: "Added to your cart."
     else
-      redirect_to products_path, notice: "Sorry, this product is out of stock."
+      redirect_to product_path(@product.to_i), notice: "Sorry, this product is not in stock."
     end
     # debugger
-    redirect_to products_path
   end
 
   def remove
@@ -36,5 +36,10 @@ class ShoppingCartsController < ApplicationController
 
   def set_quantity
     @quantity = params[:quantity] ? params[:quantity].to_i : 1
+  end
+
+  def is_available?
+    debugger
+    Product.find(params[:product_id]).availability
   end
 end

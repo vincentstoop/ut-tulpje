@@ -8,9 +8,4 @@ class Product < ApplicationRecord
   def has_photo?
     photo.present?
   end
-
-  def is_available?
-    :availability
-  end
-
 end
