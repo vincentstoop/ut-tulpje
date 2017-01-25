@@ -15,9 +15,7 @@ def new
 end
 
 def create
-  @order = Order.new(sent: false,
-                     user: current_user)
-
+  @order = current_user.orders.new(params)
   # create Lineitems
   if @order.valid?
     lineitems = []
