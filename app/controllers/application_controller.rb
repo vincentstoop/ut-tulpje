@@ -1,15 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-#   helper_method :current_user, :logged_in?
-#
-# def current_user
-#   @current_user ||= User.find_by_id(session[:user])
-# end
-#
-#  def logged_in?
-#    current_user != nil
-#  end
-# The above helper methods will be relevant later in the context
-# of sessions and when we want only the current user to be
-# able to edit his own profile
+
+  before_action :init_shopping_cart
+
+  def init_shopping_cart
+    session[:shoppingcart] ||= Hash.new(0)
+    @shopping_cart = ShoppingCart.new(session[:shoppingcart])
+    # @shopping_cart = {"1" => 5, "3" => 2}
+    @items_in_cart = @shopping_cart.number_of_items_in_cart
+    @order_total = @shopping_cart.calculate_total_price
+  end
 end
