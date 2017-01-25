@@ -17,7 +17,7 @@ class ShoppingCartsController < ApplicationController
   end
 
   def empty
-    delete_all_items
+    @shopping_cart.delete_all_items
     session[:shoppingcart] = nil
   end
 
