@@ -11,7 +11,9 @@
       <div class="col-md-4">
         <h2><%= link_to department.name, department_path(department) %></h2>
         <p><%= department.description %></p>
-        <button type="button" class="btn btn-warning navbar-btn"><%= link_to "View Assortment", department_path(department) %></button>
+        <button type="button" class="btn btn-warning">
+          <%= link_to "View Assortment", department_path(department) %>
+        </button>
       </div>
     <% end %>
   </div>
