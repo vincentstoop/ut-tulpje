@@ -7,22 +7,27 @@
     <th>Total</th>
   </thead>
   <tbody>
-    <% @shopping_cart.each do |lineitem| debugger%>
+    <%= @price_total = [] %>
+    <% @shopping_cart.items.each do |product, quantity| %>
+      <%= product_total_price = Product.find(product).price * quantity %>
+      <%= @price_total << product_total_price  %>
 
-    
-    <tr>
-      <td><%= lineitem[0].name %></td>
-      <td><%= lineitem[1] %></td>
-      <td><%= Money.new(lineitem[0].price).format %></td>
-      <td><%= Money.new(lineitem[0].price * lineitem[1]).format %></td>
-    </tr>
+          <tr>
+            <td><%= Product.find(product).name %></td>
+            <td><%= quantity %></td>
+            <td><%= Product.find(product).price %></td>
+            <td><%= product_total_price%></td>
+          </tr>
     <% end %>
     <thead>
-      <td><strong>Total</strong></td>
+      <td ><strong>Total</strong></td>
+      <td></td>
+      <td></td>
+      <td><strong><%=@price_total.inject(0){|sum,x| sum + x }%></strong></td>
       <td colspan="2">&nbsp;</td>
-      <td><%= Money.new(@order_total).format %></td>
+
     </thead>
   </tbody>
 </table>
 
-<%= link_to "Place order", orders_path, method: :post, class: "btn btn-success" %>
+<%= link_to "Place order", user_orders_path, method: :post, class: "btn btn-success" %>
