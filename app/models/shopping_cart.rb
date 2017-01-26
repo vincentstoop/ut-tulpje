@@ -8,7 +8,6 @@ class ShoppingCart
 
   def initialize (shoppingcart)
     @items = shoppingcart
-    # debugger
   end
 
   def add_to_cart product, quantity = 1

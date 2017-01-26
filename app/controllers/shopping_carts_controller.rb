@@ -11,7 +11,6 @@ class ShoppingCartsController < ApplicationController
     else
       redirect_to department_product_path(Product.find(@product.to_i).department_id, @product.to_i), notice: "Sorry, this product is not in stock."
     end
-    # debugger
   end
 
   def remove

@@ -11,8 +11,11 @@
       </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-
+        <% if user_signed_in? %>
         <li class="custom-bullet"><%= link_to "#{@items_in_cart} items | € #{@order_total}", new_user_order_path(current_user) %></li>
+        <% else %>
+        <li><%= link_to "Cart: #{@items_in_cart}, € #{@order_total}", new_user_session_path %></li>
+        <% end %>
         <% if !user_signed_in? %>
           <li><%= link_to "Log In", new_user_session_path %></li>
           <li><button type="button" class="btn btn-warning navbar-btn"><%= link_to "Sign Up", new_user_registration_path %></button></li>

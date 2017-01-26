@@ -16,15 +16,14 @@
             <td><%= Product.find(product).name %></td>
             <td><%= quantity %></td>
             <td><%= Product.find(product).price %></td>
-            <td><%= product_total_price%></td>
+            <td class="text-right"><%= number_to_currency(product_total_price, precision: 2, separator: ',', unit: '')%></td>
           </tr>
     <% end %>
     <thead>
       <td ><strong>Total</strong></td>
       <td></td>
       <td></td>
-      <td><strong><%=@order_total%></strong></td>
-      <td colspan="2">&nbsp;</td>
+      <td class="text-right"><strong><%=number_to_currency(@order_total, precision: 2, separator: ',', unit: '€')%></strong></td>
 
     </thead>
   </tbody>

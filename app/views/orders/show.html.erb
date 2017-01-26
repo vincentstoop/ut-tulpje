@@ -1,8 +1,32 @@
-<h3> Thank your for shopping with 't Tulpje! </h3>
+<h1> Thank your for shopping with 't Tulpje! </h1>
 
-## make an order display page listing.
-## Customer info
-## order reference number & date
-##a table listing the contents of the order:
-## product_id, product name, quantity, unit price
-## total price
+<h3>Ordernumber <%= @order.id %></h3>
+<p><%= @order.created_at.to_formatted_s(:long) %></p>
+<table class="table table-striped table-hover">
+  <thead class="thead-inverse">
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th class="text-right">Total</th>
+  </thead>
+  <tbody>
+    <% @order.lineitems.each do |lineitem| %>
+      <% product_total_price = lineitem.unit_price * lineitem.quantity %>
+          <tr>
+            <td><%= Product.find(lineitem.product_id).name %></td>
+            <td><%= lineitem.quantity %></td>
+            <td><%= number_to_currency(lineitem.unit_price, precision: 2, separator: ',', unit: '€ ')%></td>
+            <td class="text-right"><%= number_to_currency(product_total_price, precision: 2, separator: ',', unit: '')%></td>
+          </tr>
+    <% end %>
+    <thead>
+      <td ><strong>Total</strong></td>
+      <td></td>
+      <td></td>
+      <td class="text-right"><strong><%= number_to_currency(@order.total_price, precision: 2, separator: ',', unit: '€ ') %></strong></td>
+
+    </thead>
+  </tbody>
+</table>
+
+<%= link_to "Back", user_orders_path, class: "btn btn-success" %>
