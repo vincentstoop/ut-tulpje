@@ -1,4 +1,4 @@
-<div class="banner">
+<div class="banner-department">
   <div class="banner-text">
     <div class="layer">
       <h1><%= @department.name %></h1>
@@ -14,14 +14,14 @@
   </div>
   <div class="row">
     <% @department_products.each do |product| %>
-      <div class="col-md-4">
-        <% if !(product.image_url.nil? )%>
-          <%= image_tag product.image_url %>
+      <div class="col-md-4 products">
+        <% product.photos.each do |photo| %>
+          <p><%= image_tag photo.image.medium, class:"product-img" %></p>
         <% end %>
         <h2><%= link_to product.name, product_path(product) %></h2>
         <p>&euro; <%= product.price %></p>
         <% if !product.availability %>
-        <h4>Out of stock</h4>
+        <h4 class="stock">Out of stock</h4>
         <% end %>
         <button type="button" class="btn btn-warning">
          <%= link_to "More info", product_path(product) %>

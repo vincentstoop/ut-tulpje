@@ -8,12 +8,14 @@
   <h1> Our Departments </h1>
   <div class="row">
     <% @departments.each do |department| %>
-      <div class="col-md-4">
-        <h2><%= link_to department.name, department_path(department) %></h2>
-        <p><%= department.description %></p>
-        <button type="button" class="btn btn-warning">
-          <%= link_to "View Assortment", department_path(department) %>
-        </button>
+      <div class="col-md-4 departments">
+        <article class="department-card">
+          <h2><%= link_to department.name, department_path(department) %></h2>
+          <p><%= department.description %></p>
+          <button type="button" class="btn btn-warning department">
+            <%= link_to "View Assortment", department_path(department) %>
+          </button>
+        </article>
       </div>
     <% end %>
   </div>
