@@ -18,7 +18,7 @@
         <% product.photos.each do |photo| %>
           <p><%= image_tag photo.image.medium, class:"product-img" %></p>
         <% end %>
-        <h2><%= link_to product.name, product_path(product) %></h2>
+        <h2><%= link_to product.name, department_product_path(@department.id, product) %></h2>
         <p>&euro; <%= product.price %></p>
         <% if !product.availability %>
         <h4 class="stock">Out of stock</h4>

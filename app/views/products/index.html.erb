@@ -11,17 +11,17 @@
             <% @products.each do |product| %>
               <li>
               <% if !(product.image_url.nil?) %>
-                <%= link_to (image_tag product.image_url), product_path(product) %>
+                <%= link_to (image_tag product.image_url), department_product_path(params[:department_id], product.id) %>
                 <% end %>
                 <div class="product-card">
-                  <h2><%= link_to product.name, product_path(product) %></h2>
+                  <h2><%= link_to product.name, department_product_path(params[:department_id], product.id) %></h2>
                   <% product.photos.each do |photo| %>
                     <p><%= image_tag photo.image.thumbnail %></p>
                   <% end %>
                   <p><%= product.description %></p>
                   <p><%= product.price %></p>
                   <p><button type="button" class="btn btn-success">
-                    <%= link_to "More info", product_path(product) %>
+                    <%= link_to "More info", department_product_path(params[:department_id], product.id) %>
                   </button></p>
                 </div>
               </li>
@@ -30,7 +30,7 @@
 
           </article>
 
-          <%= link_to "[Add Product]", new_product_path %>
+          <%= link_to "[Add Product]", new_department_product_path(params[:department_id]) %>
 
         </div>
       </div>
