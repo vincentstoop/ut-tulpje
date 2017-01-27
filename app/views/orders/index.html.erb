@@ -1,4 +1,18 @@
 <h3> List of past Orders </h3>
 
-## generate a table that contains columns: order_id (with link to order show), order_date,
-## number_of_items, total_price, order_status, 
+<% if !@orders.nil? %>
+  <table style="width: 100%;">
+    <tr>
+      <th style="width: 33%;">Ordernumber</th>
+      <th style="width: 33%;">Order date</th>
+      <th style="width: 33%;" class="text-right">Total Price</th>
+    </tr>
+    <% @orders.each do |order| %>
+    <tr>
+      <td style="width: 33%;"><%= link_to "#{order.id}", user_order_path(current_user, order) %></td>
+      <td style="width: 33%;"><%= order.created_at.to_formatted_s(:long) %></td>
+      <td style="width: 33%;" class="text-right"><%= number_to_currency(order.total_price, precision: 2, separator: ',', unit: '€')%></td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>

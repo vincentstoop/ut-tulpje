@@ -24,7 +24,7 @@
         <h4 class="stock">Out of stock</h4>
         <% end %>
         <button type="button" class="btn btn-warning">
-         <%= link_to "More info", product_path(product) %>
+         <%= link_to "More info", department_product_path(@department.id, product) %>
         </button>
       </div>
     <% end %>
