@@ -3,6 +3,16 @@ class ApplicationController < ActionController::Base
 
   before_action :init_shopping_cart
 
+  def after_sign_in_path_for(resource)
+    sign_in_url = new_user_session_url
+    if request.referer == sign_in_url
+      new_user_order_path(current_user)
+      # super
+    else
+      stored_location_for(resource) || request.referer || root_path
+    end
+  end
+
   def init_shopping_cart
     session[:shoppingcart] ||= Hash.new(0)
     @shopping_cart = ShoppingCart.new(session[:shoppingcart])

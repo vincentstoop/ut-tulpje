@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :photos
   resources :lineitems
+  resource :shopping_carts, only: :show
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'shopping_cart/' => 'shopping_carts#add', as: :add_item

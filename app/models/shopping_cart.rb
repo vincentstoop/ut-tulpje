@@ -10,6 +10,9 @@ class ShoppingCart
     @items = shoppingcart
   end
 
+  def show
+  end
+
   def add_to_cart product, quantity = 1
     @items[product] = quantity
     @items
