@@ -1,21 +1,23 @@
-<article class="departments">
-
-  <h1>Our Departments</h1>
-
-  <ul>
+<div class="banner">
+  <div class="banner-text">
+    <div class="layer">
+    </div>
+  </div>
+</div>
+<div class="container departments">
+  <h1> Our Departments </h1>
+  <div class="row">
     <% @departments.each do |department| %>
-    <li>
-      <% if !(department.image_url.nil?) %>
-      <%= link_to (image_tag department.image_url), department_path(department) %>
-      <% end %>
-      <div class="">
-        <h2><%= link_to department.name, department_path(department) %></h2>
-        <p><%= department.description %></p>
+      <div class="col-md-4 departments">
+        <article class="department-card">
+          <h2><%= link_to department.name, department_path(department) %></h2>
+          <p><%= department.description %></p>
+          <button type="button" class="btn btn-warning department">
+            <%= link_to "View Assortment", department_path(department) %>
+          </button>
+        </article>
       </div>
-    </li>
     <% end %>
-  </ul>
-
-</article>
-
-<%= link_to "[Add Department]", new_department_path %>
+  </div>
+  <%= link_to "[Add Department]", new_department_path %>
+</div>
