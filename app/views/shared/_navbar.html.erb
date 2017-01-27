@@ -15,7 +15,7 @@
         <!-- <li class="custom-bullet"><%= link_to "#{@items_in_cart} items | € #{@order_total}", new_user_order_path(current_user) %></li> -->
         <li class="custom-bullet"><%= link_to "#{@items_in_cart} items | " + number_to_currency(@order_total, precision: 2, separator: ',', unit: '€ '), new_user_order_path(current_user) %></li>
         <% else %>
-        <li class="custom-bullet"><%= link_to "#{@items_in_cart} items | " + number_to_currency(@order_total, precision: 2, separator: ',', unit: '€ '), new_user_session_path %></li>
+        <li class="custom-bullet"><%= link_to "#{@items_in_cart} items | " + number_to_currency(@order_total, precision: 2, separator: ',', unit: '€ '), shopping_carts_path %></li>
         <% end %>
         <% if !user_signed_in? %>
           <li><%= link_to "Log In", new_user_session_path %></li>
